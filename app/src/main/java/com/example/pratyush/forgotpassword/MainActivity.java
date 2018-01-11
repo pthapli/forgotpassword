@@ -6,10 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +25,12 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class MainActivity extends AppCompatActivity {
 
+    int k=0;
     private Button signUp,logIn;
     private TextView forgotPassword;
     private EditText editTextemail,editTextpassword;//take username as email for now
     private FirebaseAuth mAuth;
+    private ImageButton imageButton;
     ProgressBar pbarmain;
     Toolbar myToolbar;
 
@@ -40,8 +46,51 @@ public class MainActivity extends AppCompatActivity {
         forgotPassword=findViewById(R.id.forgot_password);
         mAuth=FirebaseAuth.getInstance();
         pbarmain=findViewById(R.id.pbarmain);
+        imageButton=findViewById(R.id.imagebutton);
         //myToolbar=findViewById(R.id.my_toolbar);
         //setSupportActionBar(myToolbar);
+
+
+        imageButton.setVisibility(View.GONE);
+        editTextpassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                imageButton.setVisibility(View.VISIBLE);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(k==0)
+                {
+                    editTextpassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    editTextpassword.setSelection(editTextpassword.length());
+                    k=1;
+                }
+                else if(k==1)
+                {
+                    editTextpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    editTextpassword.setSelection(editTextpassword.length());
+                    k=0;
+                }
+            }
+        });
+
+
+
+
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override

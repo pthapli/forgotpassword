@@ -14,7 +14,7 @@
         android:layout_gravity="top"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-.-->
+ -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             android:layout_marginTop="50dp"
             />
 
-        
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -64,6 +64,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+
+
+
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
 
         <EditText
@@ -81,6 +89,22 @@
             android:padding="8dp"
             android:layout_marginTop="20dp"
            />
+
+            <ImageButton
+                android:id="@+id/imagebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/password"
+                android:layout_marginEnd="17dp"
+                android:layout_marginRight="17dp"
+                android:layout_marginTop="7dp"
+                android:background="@null"
+                android:src="@drawable/ic_remove_red_eye_black_24dp" />
+
+        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"

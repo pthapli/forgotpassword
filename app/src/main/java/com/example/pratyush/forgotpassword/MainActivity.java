@@ -25,14 +25,14 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    int k=0;
+    int k=0;//for toggling password visibility
     private Button signUp,logIn;
     private TextView forgotPassword;
     private EditText editTextemail,editTextpassword;//take username as email for now
     private FirebaseAuth mAuth;
     private ImageButton imageButton;
-    ProgressBar pbarmain;
-    Toolbar myToolbar;
+    private ProgressBar pbarmain;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +47,14 @@ public class MainActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         pbarmain=findViewById(R.id.pbarmain);
         imageButton=findViewById(R.id.imagebutton);
+       // toolbar=findViewById(R.id.app_bar);
         //myToolbar=findViewById(R.id.my_toolbar);
+       // setSupportActionBar(toolbar);
+       // Toolbar myToolbar = findViewById(R.id.my_toolbar);
         //setSupportActionBar(myToolbar);
 
 
+        //eye for show password using imageButton
         imageButton.setVisibility(View.GONE);
         editTextpassword.addTextChangedListener(new TextWatcher() {
             @Override
